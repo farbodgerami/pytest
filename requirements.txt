@@ -6,3 +6,4 @@ pytest==9.0.1
 django-cors-headers
 djangorestframework
 django
+pytest-django
