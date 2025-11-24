@@ -25,12 +25,12 @@ SECRET_KEY = "django-insecure-2%ou9v0esl!jv+3+!tme@^!^ptos8yau-21^xu-b7tkwnm4uwv
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ['localhost','127.0.0.1',"*"]
 
 
 # Application definition
 
-INSTALLED_APPS = [
+INSTALLED_APPS = [ "corsheaders",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     "rest_framework",
 ]
 
-MIDDLEWARE = [
+MIDDLEWARE = ['corsheaders.middleware.CorsMiddleware',
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -100,6 +100,13 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOWED_ORIGINS = [  
+  
+    "http://localhost",
+    "http://127.0.0.1" 
+]
+CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1',"http://localhost" ]  
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
@@ -122,3 +129,11 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
+# other service: defferent emailhost
+EMAIL_HOST='smtp.gmail.com'
+EMAIL_HOST_USER='fb.gerami@gmail.com'
+EMAIL_HOST_PASSWORD='<password>'
+EMAIL_PORT=587
+EMAIL_USE_TLS=True

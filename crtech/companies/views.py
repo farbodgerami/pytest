@@ -10,6 +10,30 @@ from django.test import Client
 import json
 
 
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+
+
+# @api_view(["POST"])
+# def credentialcheck(request):
+#     return Response({"message": "Hello, world!"})
+from django.core.mail import send_mail
+
+
+@api_view(["POST"])
+def sendmail(request):
+
+    send_mail(
+        subject=request.data.get("subject"),
+        message=request.data.get("message"),
+        from_email="fb.gerami@gmail.com",
+        recipient_list=["fb.gerami@gmail.com"],
+    )
+    return Response(
+        {"status": "success", "information": "email sent successfully"}, status=200
+    )
+
+
 class CompanyViewSet(ModelViewSet):
     serializer_class = CompanySerializer
     # print(reverse("companies:index"))

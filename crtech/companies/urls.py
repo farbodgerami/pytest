@@ -3,6 +3,7 @@ from . import views
 
 app_name = "companies"
 urlpatterns = [
+    path("sendemail/", views.sendmail, name="sendmail"),
     path(
         "",
         views.CompanyViewSet.as_view({"get": "list", "post": "create"}),
