@@ -46,3 +46,9 @@ pytest -v -s --durations=0 /home/farbod/Desktop/dev/inprogress/pytest/crtech/com
 
 #### specific marker:
 pytest -v -s --durations=0 -m xfail
+
+
+
+
+cd ~/Desktop/dev/inprogress/pytest/gis
+pytest fibonacci -v
